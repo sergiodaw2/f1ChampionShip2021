@@ -1,0 +1,49 @@
+<!-- <div>
+  <p *ngFor="let race of racesDetails">{{race.name}}</p>
+</div> -->
+
+<div class="d-flex justify-content-center">
+  <div class="d-flex flex-column">
+    <div>
+      <img class="logo" src="../../assets/Formula1Championship.jpg">
+    </div>
+    <div class="d-flex">
+      <span class="font-weight-bold text-success align-items-start col-10" name="ranking">Ranking / Global</span>
+      <!--Dropdown seleccionar carreras-->
+      <div class="btn-group align-items-end col-2">
+        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Races
+        </button>
+        <div class="dropdown-menu">
+           <a class="dropdown-item" (click)="pasarInfoDetailsRace(race)" [routerLink]="['/race-details/']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" *ngFor="let race of racesDetails">{{race.name}}</a>
+        </div>
+      </div>
+    </div>
+    <table class="table table-striped">
+      <thead class="thead">
+        <tr class="cabezaTabla text-center">
+          <th class="th-left text-center" scope="col"></th>
+          <th class="text-center" scope="col">Rank</th>
+          <th class="text-center" scope="col">Name</th>
+          <th class="text-center" class="th-right" scope="col">Team</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bodyTabla" *ngFor="let pilot of pilots" (click)="pasarInfoDetailsPiloto(pilot)" [routerLink]="['/pilot-details/']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}"> <!-- ngFor -->
+          <td class="primerTd" scope="row"> <img src="{{pilot.picture}}"></td>
+          <ng-container [ngSwitch]="true">
+            <td class="text-center" *ngSwitchCase="pilot.rank == 1"><img src="../../assets/oro.jpg"></td>
+            <td class="text-center"*ngSwitchCase="pilot.rank == 2"><img src="../../assets/plata.jpg"></td>
+            <td class="text-center" *ngSwitchCase="pilot.rank == 3"><img src="../../assets/bronce.jpg"></td>
+            <td class="text-center" *ngSwitchDefault>{{pilot.rank}} </td>
+          </ng-container>
+
+          <!-- <td *ngIf="pilot.rank>3">{{pilot.rank}}</td> -->
+          <td class="text-center">{{pilot.name}}</td>
+          <td class="text-center">{{pilot.team}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

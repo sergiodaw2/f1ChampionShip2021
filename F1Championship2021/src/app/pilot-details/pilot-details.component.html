@@ -1,0 +1,74 @@
+<!-- <div>
+  <p *ngFor="let race of racesDetails">{{race.name}}</p>
+</div> -->
+
+<div class="d-flex justify-content-center">
+  <div class="d-flex flex-column">
+    <div [routerLink]="['/main-page/']">
+      <img class="logo" src="../../assets/Formula1Championship.jpg" >
+    </div>
+    <div class="d-flex">
+      <span class="font-weight-bold text-success align-items-start col-10" name="ranking">Driver Seaon Results</span>
+
+      <div class="btn-group align-items-end col-2">
+        <a [routerLink]="['/main-page/']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}"><button type="button" class="btn btn-success"  aria-haspopup="true" aria-expanded="false">
+            Back
+          </button>
+        </a>
+      </div>
+
+    </div>
+    <div id="container" class="d-flex flex-row justify-content-center col-12">
+      <div id="tarjetaPiloto" class="fle-row justify-content-center m-4" style="width: 30%;">
+        <table class="table">
+          <thead class="thead align">
+            <tr class="cabezaTabla">
+              <th class="driverTag text-center"> Driver Card </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="text-center">Picture</tr>
+            <br>
+            <tr class="text-center">Name</tr>
+            <tr class="text-center">{{pilotShared.name}}</tr><br>
+
+            <tr class="text-center">Age</tr>
+            <tr class="text-center">{{pilotShared.age}}</tr><br>
+
+            <tr class="text-center">Team</tr>
+            <tr class="text-center">{{pilotShared.team}}</tr><br>
+
+            <tr class="text-center">Global Ranking</tr>
+            <ng-container [ngSwitch]="true">
+              <tr class="text-center" *ngSwitchCase="pilotShared.rank == 1"><img src="../../assets/oro.jpg"></tr>
+              <tr class="text-center" *ngSwitchCase="pilotShared.rank == 2"><img src="../../assets/plata.jpg"></tr>
+              <tr class="text-center" *ngSwitchCase="pilotShared.rank == 3"><img src="../../assets/bronce.jpg"></tr>
+              <tr class="text-center" *ngSwitchDefault>{{pilotShared.rank}} </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+
+        <div id="tablaCarreras" class="flex-row justify-content-center" style="width: 70%;">
+          <table class="table table-striped">
+            <thead class="thead">
+              <tr class="cabezaTabla">
+                <th class="th-left text-center " scope="col">Race</th>
+                <th class="text-center" scope="col">Position</th>
+                <th class="th-right text-center" scope="col">Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bodyTabla" *ngFor="let race of pilotRaces"> <!-- ngFor -->
+                <td class="primerTd text-center" scope="row">{{race.name}}</td>
+                <td class="text-center" >rank</td>
+                <td class="text-center" >{{race.time}}</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
